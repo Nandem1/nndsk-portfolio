@@ -1,23 +1,41 @@
 import type { Experience, TechStack, Project } from "./types";
 
-// Datos de ejemplo - reemplazar con tus datos reales
 export const experiences: Experience[] = [
   {
     id: "1",
     company: "Mercado House SPA",
-    position: "Fullstack Developer y Encargado de Sistemas",
-    startDate: "2024-03",
+    position: "Fullstack Developer",
+    startDate: "2025-04",
     endDate: "Presente",
-    duration: "1 año",
+    duration: "8 meses",
     description: [
+      "Definicion y orquestacion de infraestructura tecnologica inicial",
       "Desarrollo de aplicaciones web, escritorio y móvil modernas",
-      "Ingreso de mercaderia, calculo y configuracion de precios",
-      "Soporte tecnico a usuarios y POS",
+      "Manejo de base de datos PostgreSQL",
+      "Manejo de sistema de control de versiones Git",
+      "API RESTful con Node.js y Express",
+      "Arquitectura de microservicios con Go",
     ],
-    technologies: ["Next.js", "TypeScript", "Node.js", "Go", "PostgreSQL", "Git", "Linux", "Excel"],
+    technologies: ["Next.js", "TypeScript", "Node.js", "Go", "PostgreSQL", "Git", "Linux"],
   },
   {
     id: "2",
+    company: "Mercado House SPA",
+    position: "Asistente de Sistemas",
+    startDate: "2024-03",
+    endDate: "2025-04",
+    duration: "1 año y 1 mes",
+    description: [
+      "Ingreso de facturas al sistema ERP Defontana",
+      "Calculo de precios de ventas, carteleria y mantenibilidad de sala de ventas",
+      "Soporte tecnico a usuarios y POS",
+      "Control de vencimientos y elaboracion de promociones",
+      "Contabilizacion y deshecho de mercaderia como merma"
+    ],
+    technologies: ["Defontana", "Excel", "Word", "Power Point", "Visual Basic"],
+  },
+  {
+    id: "3",
     company: "Grupo Alcosafe",
     position: "Key Account Manager",
     startDate: "2020-09",
@@ -25,10 +43,10 @@ export const experiences: Experience[] = [
     duration: "2 años",
     description: [
       "Manejo de cartera de clientes y negocios",
-      "Llamadas de venta y seguimiento de ventas",
+      "Llamadas de venta y seguimiento de ventas en frio",
       "Manejo de stock y control de inventario",
     ],
-    technologies: ["Excel", "Power Point", "Word", "KameERP", "ERP"],
+    technologies: ["Excel", "Power Point", "Word", "KameERP"],
   }
 ];
 
@@ -39,7 +57,7 @@ export const techStack: TechStack[] = [
       { name: "React" },
       { name: "Next.js" },
       { name: "TypeScript" },
-      { name: "Tailwind CSS" },
+      { name: "Tailwind CSS" }
     ],
   },
   {
@@ -47,42 +65,49 @@ export const techStack: TechStack[] = [
     technologies: [
       { name: "Node.js" },
       { name: "Python" },
+      { name: "Go" },
+      { name: "Express" },
+    ],
+  },
+  {
+    category: "Bases de Datos",
+    technologies: [
       { name: "PostgreSQL" },
     ],
   },
-  // Agregar más categorías aquí
+  {
+    category: "Herramientas & DevOps",
+    technologies: [
+      { name: "Git" },
+      { name: "Linux" },
+    ],
+  },
 ];
 
 export const aiStack: TechStack[] = [
   {
     category: "Herramientas de Desarrollo",
     technologies: [
-      { name: "Cursor IDE (Modo Auto)" },
+      { name: "Cursor IDE" },
     ],
   },
   {
-    category: "Modelos de IA - Debugging & Análisis",
+    category: "Debugging & Análisis",
     technologies: [
-      { name: "DeepSeek V3.1" },
+      { name: "DeepSeek" },
     ],
   },
   {
-    category: "Modelos de IA - Solicitudes Complejas",
+    category: "Solicitudes Complejas",
     technologies: [
-      { name: "Claude Sonnet 4.5" },
-      { name: "ChatGPT 5.1 Codex" },
+      { name: "Claude" },
+      { name: "ChatGPT" },
     ],
   },
   {
-    category: "Modelos de IA - Diseño Frontend",
+    category: "Diseño Frontend",
     technologies: [
-      { name: "Gemini 3 Pro" },
-    ],
-  },
-  {
-    category: "En Evaluación",
-    technologies: [
-      { name: "Composer 1" },
+      { name: "Gemini" },
     ],
   },
 ];
