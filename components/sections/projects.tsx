@@ -14,144 +14,49 @@ export function Projects({ projects }: ProjectsProps) {
   const otherProjects = projects.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl font-semibold tracking-tight text-foreground mb-12 text-center"
+          transition={{ duration: 0.4 }}
+          className="text-2xl font-medium text-foreground mb-12"
         >
           Proyectos
         </motion.h2>
         
         {featuredProjects.length > 0 && (
-          <div className="space-y-8 mb-16">
+          <div className="space-y-12 mb-16">
             {featuredProjects.map((project, index) => (
-              <motion.div
+              <motion.article
                 key={project.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 hover:border-foreground/20 transition-all duration-300 hover:shadow-xl hover:shadow-foreground/5"
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="space-y-4"
               >
-                {/* Efecto de brillo sutil en hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-foreground/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                <div className="relative z-10 flex flex-col lg:flex-row gap-6">
+                <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
-                    <h3 className="text-2xl font-semibold text-foreground mb-3">
+                    <h3 className="text-xl font-medium text-foreground mb-2">
                       {project.title}
                     </h3>
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
                       {project.description}
                     </p>
-                    
-                    <div className="flex flex-wrap gap-3 mb-6">
-                      {project.technologies.map((tech) => {
-                        const normalizedName = normalizeTechName(tech);
-                        const Icon = getTechIcon(normalizedName);
-                        
-                        return (
-                          <motion.div
-                            key={tech}
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-background border border-border text-foreground text-xs font-medium transition-all duration-200 hover:border-foreground/40 hover:bg-accent/50 hover:shadow-md"
-                          >
-                            {Icon && (
-                              <Icon className="w-4 h-4" />
-                            )}
-                            <span>{tech}</span>
-                          </motion.div>
-                        );
-                      })}
-                    </div>
-                    
-                    <div className="flex gap-4">
-                      {project.githubUrl && (
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-background border border-border text-muted-foreground hover:text-foreground hover:border-foreground/40 hover:bg-accent/50 transition-all duration-200 hover:shadow-md"
-                        >
-                          <Github className="w-4 h-4" />
-                          <span className="text-sm font-medium">Código</span>
-                        </a>
-                      )}
-                      {project.liveUrl && (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-background border border-border text-muted-foreground hover:text-foreground hover:border-foreground/40 hover:bg-accent/50 transition-all duration-200 hover:shadow-md"
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                          <span className="text-sm font-medium">Ver proyecto</span>
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
-        
-        {otherProjects.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {otherProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 hover:border-foreground/20 transition-all duration-300 hover:shadow-lg hover:shadow-foreground/5"
-              >
-                {/* Efecto de brillo sutil en hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-foreground/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                <div className="relative z-10">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech) => {
-                      const normalizedName = normalizeTechName(tech);
-                      const Icon = getTechIcon(normalizedName);
-                      
-                      return (
-                        <motion.div
-                          key={tech}
-                          whileHover={{ scale: 1.05 }}
-                          className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-background border border-border text-foreground text-xs font-medium transition-all duration-200 hover:border-foreground/40 hover:bg-accent/50"
-                        >
-                          {Icon && (
-                            <Icon className="w-3 h-3" />
-                          )}
-                          <span>{tech}</span>
-                        </motion.div>
-                      );
-                    })}
                   </div>
                   
-                  <div className="flex gap-3">
+                  <div className="flex gap-2 shrink-0">
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-background border border-border text-muted-foreground hover:text-foreground hover:border-foreground/40 hover:bg-accent/50 transition-all duration-200"
+                        className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+                        aria-label="Ver código en GitHub"
                       >
-                        <Github className="w-3.5 h-3.5" />
-                        <span className="text-xs font-medium">Código</span>
+                        <Github className="w-4 h-4" />
                       </a>
                     )}
                     {project.liveUrl && (
@@ -159,15 +64,108 @@ export function Projects({ projects }: ProjectsProps) {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-background border border-border text-muted-foreground hover:text-foreground hover:border-foreground/40 hover:bg-accent/50 transition-all duration-200"
+                        className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+                        aria-label="Ver proyecto en vivo"
                       >
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        <span className="text-xs font-medium">Ver</span>
+                        <ExternalLink className="w-4 h-4" />
                       </a>
                     )}
                   </div>
                 </div>
-              </motion.div>
+                
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => {
+                    const normalizedName = normalizeTechName(tech);
+                    const Icon = getTechIcon(normalizedName);
+                    
+                    return (
+                      <div
+                        key={tech}
+                        className="inline-flex items-center gap-1.5 px-2 py-1 rounded hover:bg-muted/50 transition-colors"
+                      >
+                        {Icon && (
+                          <Icon className="w-3.5 h-3.5 text-muted-foreground" />
+                        )}
+                        <span className="text-xs text-muted-foreground">
+                          {tech}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        )}
+        
+        {otherProjects.length > 0 && (
+          <div className="space-y-8">
+            {otherProjects.map((project, index) => (
+              <motion.article
+                key={project.id}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.03 }}
+                className="space-y-3"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <h3 className="text-lg font-medium text-foreground mb-1">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2">
+                      {project.description}
+                    </p>
+                  </div>
+                  
+                  <div className="flex gap-2 shrink-0">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 text-muted-foreground hover:text-foreground transition-colors"
+                        aria-label="Ver código en GitHub"
+                      >
+                        <Github className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 text-muted-foreground hover:text-foreground transition-colors"
+                        aria-label="Ver proyecto en vivo"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+                
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => {
+                    const normalizedName = normalizeTechName(tech);
+                    const Icon = getTechIcon(normalizedName);
+                    
+                    return (
+                      <div
+                        key={tech}
+                        className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded hover:bg-muted/50 transition-colors"
+                      >
+                        {Icon && (
+                          <Icon className="w-3 h-3 text-muted-foreground" />
+                        )}
+                        <span className="text-xs text-muted-foreground">
+                          {tech}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </motion.article>
             ))}
           </div>
         )}
