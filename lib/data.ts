@@ -115,10 +115,11 @@ export const aiStack: TechStack[] = [
 export const projects: Project[] = [
   {
     id: "1",
-    title: "Proyecto Ejemplo",
-    description: "Descripción del proyecto y sus características principales.",
-    technologies: ["React", "TypeScript", "Next.js"],
-    githubUrl: "https://github.com",
+    image: "https://github.com/Nandem1/nndsk-DTAP/raw/main/dtap-gui/images/dark-mode-1.png",
+    title: "nndsk-DTAP",
+    description: "nndsk-DTAP es una herramienta de escritorio para Ragnarok Online con features como: Autopot, Spammer y Autobuff. Es un fork del proyecto original de kingj-dtap hecho en C# y migrado a Go.",
+    technologies: ["Go", "Wails", "Nextjs"],
+    githubUrl: "https://github.com/Nandem1/nndsk-DTAP",
     liveUrl: "https://example.com",
     featured: true,
   },

@@ -51,6 +51,7 @@ import {
   SiOpenai,
   SiAnthropic,
   SiGoogle,
+  SiWails,
 } from "react-icons/si";
 import { IconType } from "react-icons";
 
@@ -78,6 +79,7 @@ export const techIconMap: Record<string, IconType> = {
   "Express": SiExpress,
   "FastAPI": SiFastapi,
   "Django": SiDjango,
+  "Wails": SiWails,
   
   // Bases de datos
   "PostgreSQL": SiPostgresql,
@@ -166,6 +168,7 @@ export function normalizeTechName(techName: string): string {
     "tailwindcss": "Tailwind CSS",
     "nodejs": "Node.js",
     "node.js": "Node.js",
+    "wails": "Wails",
     "postgres": "PostgreSQL",
     "postgresql": "PostgreSQL",
     "mongodb": "MongoDB",
